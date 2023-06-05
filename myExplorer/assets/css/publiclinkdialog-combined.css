@@ -1,0 +1,105 @@
+body {
+    font-family: "Segoe UI", "Segoe UI Web Regular", "Segoe UI Symbol", "Helvetica Neue", "BBAlpha Sans", "S60 Sans", Arial, sans-serif;
+    font-size: 12px;
+    font-weight: normal;
+    color: #000
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%
+}
+
+form {
+    margin: 0;
+    padding: 8px
+}
+
+.gt-formBottom {
+    position: absolute;
+    right: 8px;
+    bottom: 8px
+}
+
+.gt-panel {
+    background-color: #f0f0f0;
+    border-top: #e0e0e0 1px solid;
+    border-left: #e0e0e0 1px solid;
+    border-bottom: #b4b4b4 1px solid;
+    border-right: #b4b4b4 1px solid
+}
+
+.selectable {
+    -webkit-touch-callout: none;
+    -webkit-user-select: text;
+    -khtml-user-select: text;
+    -moz-user-select: text;
+    -ms-user-select: text;
+    user-select: text
+}
+
+.tabPanel {
+    min-height: 21px;
+    border-bottom: 1px solid #919b9c
+}
+
+.tab {
+    border-left: 1px solid #919b9c;
+    border-right: 1px solid #919b9c;
+    border-bottom: 1px solid #919b9c;
+    padding: 5px;
+    display: none;
+    background-color: #fff;
+    position: fixed
+}
+
+.tabPanel DIV {
+    float: left;
+    height: 21px;
+    padding-left: 3px;
+    vertical-align: middle;
+    background-repeat: no-repeat;
+    background-position: bottom left;
+    cursor: default;
+    position: relative;
+    bottom: -1px;
+    margin-left: 0;
+    margin-right: 0
+}
+
+.tabPanel .tabActive {
+    margin-left: 0;
+    margin-right: 0;
+    z-index: 10
+}
+
+.tabPanel .tabInactive {
+    margin-left: 0;
+    margin-right: 0;
+    z-index: 1
+}
+
+.tabPanel .inactiveTabOver {
+    margin-left: 0;
+    margin-right: 0
+}
+
+.tabPanel span {
+    font-family: arial;
+    vertical-align: top;
+    font-size: 11px;
+    padding-left: 3px;
+    padding-right: 3px;
+    line-height: 21px;
+    float: left
+}
+
+.tabPanel .tabActive span {
+    padding-bottom: 1px;
+    line-height: 20px
+}
+
+.tabPanel img {
+    float: left
+}

@@ -1,0 +1,31 @@
+.headericons {
+    background-image: url("../images/headericons.png") !important
+}
+
+.headericons.icon-administration16 {
+    background-position: 0 -96px !important
+}
+
+.headericons.icon-createpubliclink16 {
+    background-position: 0 -80px !important
+}
+
+.headericons.icon-filevista16 {
+    background-position: 0 -64px !important
+}
+
+.headericons.icon-logout16 {
+    background-position: 0 -48px !important
+}
+
+.headericons.icon-managepubliclinks16 {
+    background-position: 0 -32px !important
+}
+
+.headericons.icon-userprofile16 {
+    background-position: 0 -16px !important
+}
+
+.headericons.icon-usersettings16 {
+    background-position: 0 0 !important
+}

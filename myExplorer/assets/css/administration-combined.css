@@ -1,0 +1,364 @@
+.gt-productlink {
+    display: none
+}
+
+.gt-link {
+    color: #000080
+}
+
+.gt-nonSelectableText {
+    user-select: none;
+    -ms-user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: -moz-none;
+    -o-user-select: none;
+    cursor: default
+}
+
+.gt-nonSelectableText input, textarea {
+    cursor: auto;
+    user-select: text;
+    -ms-user-select: text;
+    -webkit-user-select: text;
+    -moz-user-select: text;
+    -o-user-select: text
+}
+
+.gt-warningText {
+    color: #7f7c73
+}
+
+.gt-infoPane {
+    color: #4c607a;
+    background-color: #fff
+}
+
+.gt-infoPaneTitle {
+    color: #006e12;
+    font-size: 12pt
+}
+
+.gt-toolBar {
+    background-color: #f0f0f0;
+    border-top: #fff 1px solid;
+    border-left: #fff 1px solid;
+    border-bottom: #b4b4b4 1px solid;
+    border-right: #b4b4b4 1px solid;
+    padding: 1px
+}
+
+.gt-toolBarButton {
+    background-color: #f0f0f0;
+    border: 1px #f0f0f0 solid
+}
+
+.gt-toolBarButton-hover {
+    background-color: #fcfcfc;
+    border-top: #fff 1px solid;
+    border-left: #fff 1px solid;
+    border-bottom: #b4b4b4 1px solid;
+    border-right: #b4b4b4 1px solid
+}
+
+.gt-toolBarButton-selected {
+    background-color: #b4b4b4;
+    border-top: #3c3c3c 1px solid;
+    border-left: #3c3c3c 1px solid;
+    border-bottom: #fff 1px solid;
+    border-right: #fff 1px solid
+}
+
+.gt-toolBarSeparator {
+    background-color: #b4b4b4
+}
+
+.gt-treeView {
+    background-color: #fff
+}
+
+.gt-treeViewTitleBar {
+    background-color: #f0f0f0;
+    border-top: #fff 1px solid;
+    border-left: #fff 1px solid;
+    border-bottom: #b4b4b4 1px solid;
+    border-right: #b4b4b4 1px solid;
+    padding: 2px
+}
+
+.gt-treeViewNode {
+    border: 1px solid transparent;
+    padding-top: 1px;
+    padding-bottom: 1px;
+    background-position: 0 -81px;
+    background-repeat: repeat-x;
+    height: 18px
+}
+
+.gt-treeViewNode-hover {
+    background-color: #e5f3ff;
+    border: 1px solid transparent;
+    background-position: 0 0
+}
+
+.gt-treeViewNode-selected {
+    background-color: #cce8ff;
+    border: 1px solid transparent;
+    background-position: 0 -20px
+}
+
+.gt-treeViewNode-selectedHover {
+    background-color: #cce8ff;
+    border: 1px solid #99d1ff;
+    background-position: 0 -40px
+}
+
+.gt-treeViewNodeContent {
+    font-family: "Segoe UI", "Segoe UI Web Regular", "Segoe UI Symbol", "Helvetica Neue", "BBAlpha Sans", "S60 Sans", Arial, sans-serif !important;
+    font-size: 12px !important;
+    font-weight: normal;
+    color: #000;
+    cursor: pointer
+}
+
+.gt-gridView {
+    background-color: #fff
+}
+
+.gt-gridViewColumn {
+    background-color: #fcfcfc;
+    font-family: "Segoe UI", "Segoe UI Web Regular", "Segoe UI Symbol", "Helvetica Neue", "BBAlpha Sans", "S60 Sans", Arial, sans-serif !important;
+    font-size: 12px !important;
+    font-weight: normal;
+    color: #4c607a;
+    border-left: #fcfcfc 1px solid;
+    border-top: #d6e5f5 1px solid;
+    border-right: #d6e5f5 1px solid;
+    border-bottom: #fcfcfc 1px solid;
+    height: 18px
+}
+
+.gt-gridViewColumn-hover {
+    background-color: #f1f5fb;
+    border-left: #e3e8ee 1px solid;
+    border-top: #d6e5f5 1px solid;
+    border-right: #e3e8ee 1px solid;
+    border-bottom: #e3e8ee 1px solid
+}
+
+.gt-gridViewColumn-selected {
+    background-color: #f6f7f8;
+    border-left: #c0cbd9 1px solid;
+    border-top: #c0cbd9 1px solid;
+    border-right: #c0cbd9 1px solid;
+    border-bottom: #c0cbd9 1px solid
+}
+
+.gt-gridViewCell {
+    padding-top: 1px;
+    padding-bottom: 1px;
+    padding-left: 5px;
+    padding-right: 5px;
+    font-family: "Segoe UI", "Segoe UI Web Regular", "Segoe UI Symbol", "Helvetica Neue", "BBAlpha Sans", "S60 Sans", Arial, sans-serif !important;
+    font-size: 12px !important;
+    font-weight: normal;
+    color: #000
+}
+
+.gt-gridViewRow {
+    height: 18px
+}
+
+.gt-gridViewRow-hover {
+    background-color: #e5f3ff;
+    outline: 1px solid transparent
+}
+
+.gt-gridViewRow-selected {
+    background-color: #cce8ff;
+    outline: 1px solid transparent
+}
+
+.gt-gridViewRow-selectedHover {
+    background-color: #cce8ff;
+    outline: 1px solid #99d1ff
+}
+
+.gt-gridViewRow-focused {
+    background-color: #cce8ff;
+    outline: 1px solid #99d1ff
+}
+
+.gt-contextMenu {
+    padding: 2px;
+    background-color: #f2f2f2;
+    border: 1px #ccc solid;
+    -webkit-box-shadow: 2px 2px 4px 0 #8e8e8e;
+    -moz-box-shadow: 2px 2px 4px 0 #8e8e8e;
+    box-shadow: 2px 2px 4px 0 #8e8e8e
+}
+
+.gt-contextMenuSeparator {
+    background-color: #d7d7d7;
+    border-top: 1px solid #f2f2f2;
+    border-bottom: 1px solid #f2f2f2
+}
+
+.gt-contextMenuVerticalSeparator {
+    display: none;
+    background-color: #d7d7d7
+}
+
+.gt-contextMenuItem {
+    font-family: "Segoe UI", "Segoe UI Web Regular", "Segoe UI Symbol", "Helvetica Neue", "BBAlpha Sans", "S60 Sans", Arial, sans-serif !important;
+    font-size: 12px;
+    font-weight: normal;
+    color: #000;
+    border: 1px solid transparent;
+    padding-top: 1px;
+    padding-bottom: 1px;
+    background-position: 0 -81px;
+    background-repeat: repeat-x
+}
+
+.gt-contextMenuItem-hover {
+    background-color: #91c9f7;
+    background-color: rgba(0, 140, 255, .4);
+    border: 1px solid transparent;
+    background-position: 0 -60px
+}
+
+.gt-contextMenuItem-disabled {
+    color: #a0a0a0
+}
+
+.gt-contextMenuItemIcon {
+    background-color: #f2f2f2
+}
+
+.gt-contextMenuItem-hover .gt-contextMenuItemIcon {
+    background-color: transparent
+}
+
+.gt-modalDialog {
+    background-color: #f0f0f0;
+    border-top: #fff 1px solid;
+    border-left: #fff 1px solid;
+    border-bottom: #787878 1px solid;
+    border-right: #787878 1px solid;
+    font-family: Segoe UI, Tahoma, Helvetica;
+    font-weight: normal;
+    font-size: 9pt
+}
+
+.gt-modalDialog, .gt-modalDialog * {
+    box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    -ms-box-sizing: content-box;
+    -webkit-box-sizing: content-box
+}
+
+.gt-modalDialogTitleBar {
+    background-color: #99b4d1;
+    color: #000
+}
+
+.gt-modalDialogParentMask {
+    background-color: #333
+}
+
+.gt-modalDialogContentMask {
+    background-color: #fff
+}
+
+.gt-Separator {
+    background-color: #f0f0f0;
+    border-top: #fff 1px solid;
+    border-left: #fff 1px solid;
+    border-bottom: #b4b4b4 1px solid;
+    border-right: #b4b4b4 1px solid;
+    cursor: w-resize
+}
+
+body {
+    font-family: "Segoe UI", "Segoe UI Web Regular", "Segoe UI Symbol", "Helvetica Neue", "BBAlpha Sans", "S60 Sans", Arial, sans-serif;
+    font-size: 12px;
+    font-weight: normal;
+    color: #000
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%
+}
+
+form {
+    margin: 0;
+    padding: 8px
+}
+
+.gt-formBottom {
+    position: absolute;
+    right: 8px;
+    bottom: 8px
+}
+
+.gt-panel {
+    background-color: #f0f0f0;
+    border-top: #e0e0e0 1px solid;
+    border-left: #e0e0e0 1px solid;
+    border-bottom: #b4b4b4 1px solid;
+    border-right: #b4b4b4 1px solid
+}
+
+.selectable {
+    -webkit-touch-callout: none;
+    -webkit-user-select: text;
+    -khtml-user-select: text;
+    -moz-user-select: text;
+    -ms-user-select: text;
+    user-select: text
+}
+
+.gt-pageHeader {
+    height: 32px;
+    line-height: 32px;
+    padding-left: 10px;
+    padding-right: 10px;
+    background-color: #e6f0fa;
+    border-bottom: 1px solid #a0afc3 !important;
+    color: #1e395b
+}
+
+.gt-textButton {
+    color: #1e395b;
+    text-decoration: underline;
+    cursor: pointer
+}
+
+.gt-menudown-image {
+    background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAkAAAAFCAYAAACXU8ZrAAAAOUlEQVR42mM8d+t5Q0B8ST0DDrBhYU8jI4iBSyFIgZGaZANcAKRQzjL6PwyD+FiNhinEqQBZIboYAL1FJSFSXarWAAAAAElFTkSuQmCC");
+    display: inline-block;
+    width: 9px;
+    height: 5px;
+    vertical-align: middle;
+    margin-left: 4px
+}
+
+.gt-user-image {
+    background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAACCElEQVQ4y42Q3WtSYRzHLYqov2WBEMT0Ygp6LD2OeYZuphu6pbPcRDHfTupme3Fr2jSPJmmbEWWMgrJ20UYgYzBoN4fuuvMiiG5CCLr+9jwHFhIyzw8+8PDw/X6eF4WiZ/R6fYjQIaCHgkLOaDQaN8MYwLIsGIb5J9DpdBgZ0bgHCoaHVZl00IWtlA9TVjNUKjXUajXIPuXdQMHjlEd50iqDcvQ6i/SC47RMaQ8UnLQErbi/A3G/geO3eRzUIthddyEXtskTHL5c1n55XwLlqLmGT9UgWvkZ8N5RKgjJ+sj28zQo9PSPBS+aK04MDV0VZZXp7BXnxL2iDx8e3cbu2jQ25lkk4g6trLKtnmzMluKoZpwQIpxUjj70geyLBOWgsnuinsJkLoFmJSZdvbnloeVe3GcJOvZnKdzK8/j26w+Ov/9A4FUOjp0l2LcX4ailMVlLwrQ+byDxS/0EsFZ5WFZC+Pqzi3tvnmB6OwNXYxmexiqmyHq8HANXjr0g8Yt9BWPFMIzJO6gfHoArRWCrJKSTnYSJCo/xShzWp3yXxM8Tzv0vEC1CBOaMH6aNBZg3AxjNB2EhUiqT1kKUSGIwZv3XSeVCv1uEOCHaYYngxoM53Fy9S98sCemaSsYKYejuz7AkfuWsD7Vw5WiB3Qy0TVl/10jK+uQsmEXPb8OS97PSzlwjscun+b+OgzsKcRldtwAAAABJRU5ErkJggg==");
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    vertical-align: text-bottom;
+    margin-right: 2px
+}
+
+.gt-administrationPage {
+    background-color: #fff;
+    font-family: Segoe UI, Tahoma, Helvetica;
+    font-weight: normal;
+    font-size: 9pt;
+    color: #000;
+    border: 1px solid #696969
+}

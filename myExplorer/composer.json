@@ -1,0 +1,14 @@
+{
+  "autoload": {
+    "psr-4": {
+      "myExplorer\\": "vendor/myExplorer"
+    }
+  },
+  "require": {
+    "ext-gd": "*",
+    "ext-json": "*",
+    "ext-sqlite3": "*",
+    "ext-fileinfo": "*",
+    "ext-zip": "*"
+  }
+}
