@@ -9,6 +9,7 @@
     "ext-json": "*",
     "ext-sqlite3": "*",
     "ext-fileinfo": "*",
-    "ext-zip": "*"
+    "ext-zip": "*",
+    "ext-rar": "*"
   }
 }

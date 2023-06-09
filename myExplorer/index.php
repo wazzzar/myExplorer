@@ -6,11 +6,23 @@ use myExplorer\User;
 
 $authorized = false;
 if ( Request::method('post') && Request::post('loginFormSubmitButton') ){
-    $authorized = User::authorize( Request::post('username'), Request::post('password'), Request::post('remember') );
+    try {
+        $authorized = User::login(Request::post('username'), Request::post('password'), Request::post('remember') == 'on');
+    } catch (Exception $e) {
+        echo $e->getMessage();
+    }
+    if ($authorized){
+        header('Location: /');
+        exit();
+    }
 }
 
-if ( Request::method('get') ){
-    $authorized = User::checkAuthorization( Request::cookie('login'), Request::cookie('token') );
+if ( Request::method('get') && Request::cookie('login') && Request::cookie('token') ){
+    try {
+        $authorized = User::checkAuthorization(Request::cookie('login'), Request::cookie('token'));
+    } catch (Exception $e) {
+        echo $e->getMessage();
+    }
 }
 
 if ($authorized){

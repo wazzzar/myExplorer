@@ -2,21 +2,16 @@
 namespace myExplorer;
 
 class Router {
-    private static $path;
+    private static array $path;
 
-    public static function getRoute(){
+    public static function getRoute(): array
+    {
         self::$path = explode("/", $_SERVER["REQUEST_URI"]);
         return self::$path;
     }
 
-    public static function toRoute($route = "/"){
+    public static function toRoute(string $route = "/"): void
+    {
         header("Location: $route"); die();
-    }
-
-    public static function handle(){
-        self::getRoute();
-        switch ( self::$path[1] ){
-            case 'login': require_once "login.php"; break;
-        }
     }
 }
