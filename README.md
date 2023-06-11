@@ -3,6 +3,7 @@
 [GleamTech FileVista home page]( https://www.GleamTech.com/filevista)
 
 **TODO list**
+
 #### User part
 - [x] Stolen resources: html, css, js, images, icons, etc.
 - [x] Login - Logout
@@ -22,7 +23,9 @@
   - [ ] Share
   - [x] Select
   - [x] `Tab View` functions.
+
 #### Admin part
+- [x] Stolen resources: html, css, js, images, icons, etc.
 - [ ] User management
 - [ ] Group management
 - [ ] Root management
@@ -33,8 +36,8 @@
 - [x] About
 
 #### OS use note
-- **Linux:** Install **_ffmpeg_** and link it to **_/myExplorer/vendor/_**
-- **Windows:** Download **_ffmpeg.exe_** and place it to **_/myExplorer/vendor/_**
+- **Linux:** [Install **_ffmpeg_**](https://www.tecmint.com/install-ffmpeg-in-linux/) and link it to **_/myExplorer/vendor/_**
+- **Windows:** [Download **_ffmpeg.exe_**](https://ffmpeg.org/download.html) and place it to **_/myExplorer/vendor/_**
 
 @ StolenTech
 
