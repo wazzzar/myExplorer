@@ -114,34 +114,18 @@ class FileManager {
                 /*$rar = new RarArchive();
                 $rar->open($archive_path);
                 foreach ($rar->getEntries() as $entry) {
-                    /$stat['name'] = mb_convert_encoding($stat['name'], 'UTF-8', mb_detect_encoding($stat['name']));
+                    //$stat['name'] = mb_convert_encoding($stat['name'], 'UTF-8', mb_detect_encoding($stat['name']));
                     $is_folder = preg_match('#/$#', $stat['name']);
                     $stat['name'] = preg_replace('#/$#', '', $stat['name']);
 
-                    $arr = $is_folder ? [
-                        $stat['name'],
-                        null,
-                        null,
-                        true,
-                        null
-                    ] : [
-                        $stat['name'],
-                        $stat['size'],
-                        null
-                    ];
-                    $arr[] = date("Y-m-d\TH:i:s.u\Z", $stat['mtime']);
+                    $arr = self::getStructure($stat['name'], $path, '', $stat['size'], $stat['mtime'],$is_folder?'dir':'file');
 
                     if ( !empty($inner_path) ){
                         if ( !strstr($arr[0], $inner_path.'/') ) continue;
                         $arr[0] = str_replace($inner_path.'/', '', $arr[0]);
-                        if ( strstr($arr[0], '/') ) continue;
-                        $arr[0] = str_replace('/', '', $arr[0]);
-                        $obj->Result->{$is_folder ? 'Folders' : 'Files'}[] = $arr;
-                    }else{
-                        if ( strstr($arr[0], '/') ) continue;
-                        $arr[0] = str_replace('/', '', $arr[0]);
-                        $obj->Result->{$is_folder ? 'Folders' : 'Files'}[] = $arr;
                     }
+                    if ( strstr($arr[0], '/') ) continue;
+                    $obj->Result->{$is_folder ? 'Folders' : 'Files'}[] = $arr;
                 }*/
                 break;
 
@@ -163,7 +147,6 @@ class FileManager {
                     if ( strstr($arr[0], '/') ) continue;
                     $obj->Result->{$is_folder ? 'Folders' : 'Files'}[] = $arr;
                 }
-
                 break;
         }
         $obj->Success = true;

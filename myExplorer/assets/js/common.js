@@ -10,7 +10,7 @@ function enableElement(n, t, i, r) {
         u)
 }
 function onRequestJsonError(n) {
-    n.Message.indexOf("SessionExpiredOrUserNotFound") != -1 ? parent && GleamTech.JavaScript.Util.RefreshPage(parent) : alert(n.ImportantMessage || n.Message)
+    n.Message.indexOf("SessionExpiredOrUserNotFound") !== -1 ? parent && GleamTech.JavaScript.Util.RefreshPage(parent) : alert(n.ImportantMessage || n.Message)
 }
 function cloneNodeToWindow(n, t) {
     var u = document.getElementById(n), i, f, e, r;

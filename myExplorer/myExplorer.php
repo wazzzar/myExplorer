@@ -31,23 +31,23 @@ $user = User::find( Request::cookie('login') );
     <link href="assets/css/default.bundle.css" rel="stylesheet">
     <script src="assets/js/default.bundle.js"></script>
 
-    <!--script type="text/javascript" async="" src="assets/js/js"></script-->
+    <!--script async="" src="assets/js/js"></script-->
 </head>
 
 <body>
 
-<script type="text/javascript">
+<script>
     var headerConfig = {
         title: "myExplorer",
         userName: "<?=$user["login"]?>",
-        userFullName: "<?=$user["login"]?>",
+        userFullName: "<?=$user["full_name"]?>",
         isAdministrator: <?=boolval($user['admin'])?>,
         isGroupManager: <?=boolval($user['manager'])?>,
         handlerUrl: "/server.php"
     };
 </script>
 
-<script type="text/javascript" id="fileManager-loader">
+<script id="fileManager-loader">
     (function () {
         var config = {
             id: "fileManager",

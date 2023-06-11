@@ -18,7 +18,7 @@
         <span class="gt-user-image"></span><span>Administrator</span><span class="gt-menudown-image"></span>
     </div>
 </div>
-<script type="text/javascript">
+<script>
     var administrationPage = new StolenTech.myExplorer.AdministrationPage({
         ElementId: "administrationPage",
         Language: "en",

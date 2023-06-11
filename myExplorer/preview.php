@@ -5,7 +5,7 @@
     <link href="assets/css/viewer.css" rel="stylesheet" />
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/js/viewer.js"></script>
-    <script type="text/javascript">
+    <script>
         $(function() {
             $(".image").viewer({
                 url: "data-original",

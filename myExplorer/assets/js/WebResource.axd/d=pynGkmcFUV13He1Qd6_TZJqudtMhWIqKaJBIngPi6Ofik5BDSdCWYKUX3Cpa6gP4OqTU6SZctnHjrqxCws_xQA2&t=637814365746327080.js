@@ -42,7 +42,7 @@ function WebForm_DoPostBackWithOptions(options) {
         __doPostBack(options.eventTarget, options.eventArgument);
     }
 }
-var __pendingCallbacks = new Array();
+var __pendingCallbacks = [];
 var __synchronousCallBackIndex = -1;
 function WebForm_DoCallback(eventTarget, eventArgument, eventCallback, context, errorCallback, useAsync) {
     var postData = __theFormPostData +
@@ -67,7 +67,7 @@ function WebForm_DoCallback(eventTarget, eventArgument, eventCallback, context, 
         setRequestHeaderMethodExists = (xmlRequest && xmlRequest.setRequestHeader);
     }
     catch(e) {}
-    var callback = new Object();
+    var callback = {};
     callback.eventCallback = eventCallback;
     callback.context = context;
     callback.errorCallback = errorCallback;
@@ -84,7 +84,7 @@ function WebForm_DoCallback(eventTarget, eventArgument, eventCallback, context, 
         callback.xmlRequest = xmlRequest;
         // e.g. http:
         var action = theForm.action || document.location.pathname, fragmentIndex = action.indexOf('#');
-        if (fragmentIndex !== -1) {
+        if (fragmentIndex != -1) {
             action = action.substr(0, fragmentIndex);
         }
         if (!__nonMSDOMBrowser) {
@@ -92,16 +92,16 @@ function WebForm_DoCallback(eventTarget, eventArgument, eventCallback, context, 
             var path = action;
             var query = "";
             var queryIndex = action.indexOf('?');
-            if (queryIndex !== -1) {
+            if (queryIndex != -1) {
                 query = action.substr(queryIndex);
                 path = action.substr(0, queryIndex);
             }
-            if (path.indexOf("%") === -1) {
+            if (path.indexOf("%") == -1) {
                 // domain may or may not be present (e.g. action of "foo.aspx" vs "http:
-                if (/^https?\:\/\/.*$/gi.test(path)) {
+                if (/^https?:\/\/.*$/gi.test(path)) {
                     var domainPartIndex = path.indexOf("\/\/") + 2;
                     var slashAfterDomain = path.indexOf("/", domainPartIndex);
-                    if (slashAfterDomain === -1) {
+                    if (slashAfterDomain == -1) {
                         // entire url is the domain (e.g. "http:
                         domain = path;
                         path = "";
@@ -119,7 +119,7 @@ function WebForm_DoCallback(eventTarget, eventArgument, eventCallback, context, 
         xmlRequest.send(postData);
         return;
     }
-    callback.xmlRequest = new Object();
+    callback.xmlRequest = {};
     var callbackFrameID = "__CALLBACKFRAME" + callbackIndex;
     var xmlRequestFrame = document.frames[callbackFrameID];
     if (!xmlRequestFrame) {
@@ -146,7 +146,7 @@ function WebForm_DoCallback(eventTarget, eventArgument, eventCallback, context, 
             window.clearInterval(interval);
             xmlRequestFrame.document.write("");
             xmlRequestFrame.document.close();
-            xmlRequestFrame.document.write('<html><body><form method="post"><input type="hidden" name="__CALLBACKLOADSCRIPT" value="t"></form></body></html>');
+            xmlRequestFrame.document.write('<html lang="en"><body><form method="post"><input type="hidden" name="__CALLBACKLOADSCRIPT" value="t"></form></body></html>');
             xmlRequestFrame.document.close();
             xmlRequestFrame.document.forms[0].action = theForm.action;
             var count = __theFormPostCollection.length;
@@ -249,7 +249,7 @@ function WebForm_FillFirstAvailableSlot(array, element) {
 }
 var __nonMSDOMBrowser = (window.navigator.appName.toLowerCase().indexOf('explorer') == -1);
 var __theFormPostData = "";
-var __theFormPostCollection = new Array();
+var __theFormPostCollection = [];
 var __callbackTextTypes = /^(text|password|hidden|search|tel|url|email|number|range|color|datetime|date|month|week|time|datetime-local)$/i;
 function WebForm_InitCallback() {
     var formElements = theForm.elements,
@@ -280,7 +280,7 @@ function WebForm_InitCallback() {
     }
 }
 function WebForm_InitCallbackAddField(name, value) {
-    var nameValue = new Object();
+    var nameValue = {};
     nameValue.name = name;
     nameValue.value = value;
     __theFormPostCollection[__theFormPostCollection.length] = nameValue;
@@ -294,7 +294,7 @@ function WebForm_EncodeCallback(parameter) {
         return escape(parameter);
     }
 }
-var __disabledControlArray = new Array();
+var __disabledControlArray = [];
 function WebForm_ReEnableControls() {
     if (typeof(__enabledControlArray) == 'undefined') {
         return false;
@@ -454,8 +454,8 @@ function WebForm_AppendToClassName(element, className) {
     var currentClassName = ' ' + WebForm_TrimString(element.className) + ' ';
     className = WebForm_TrimString(className);
     var index = currentClassName.indexOf(' ' + className + ' ');
-    if (index === -1) {
-        element.className = (element.className === '') ? className : element.className + ' ' + className;
+    if (index == -1) {
+        element.className = (element.className == '') ? className : element.className + ' ' + className;
     }
 }
 function WebForm_RemoveClassName(element, className) {
@@ -504,7 +504,7 @@ function WebForm_GetElementDir(element) {
     return "ltr";
 }
 function WebForm_GetElementPosition(element) {
-    var result = new Object();
+    var result = {};
     result.x = 0;
     result.y = 0;
     result.width = 0;

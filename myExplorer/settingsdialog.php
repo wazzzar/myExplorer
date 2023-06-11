@@ -7,7 +7,7 @@
     <script src="assets/js/settingsdialog-combined.js"></script>
 </head>
 <body>
-<script type="text/javascript">
+<script>
     eventSetTypes = {
         "All": 32767
     };
