@@ -1,6 +1,8 @@
 <?php
 require_once "../vendor/autoload.php";
 
+const DS = DIRECTORY_SEPARATOR;
+
 use myExplorer\Request;
 use myExplorer\User;
 

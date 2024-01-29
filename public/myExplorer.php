@@ -1,5 +1,7 @@
 <?php
-require_once 'vendor/autoload.php';
+require_once '../vendor/autoload.php';
+
+const DATA = __DIR__;
 
 use myExplorer\Request;
 use myExplorer\User;
@@ -49,7 +51,7 @@ $user = User::find( Request::cookie('login') );
 
 <script id="fileManager-loader">
     (function () {
-        var config = {
+        let config = {
             id: "fileManager",
             xclass: "StolenTech.FileUltimate.FileManager",
             resizable: false,

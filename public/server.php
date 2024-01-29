@@ -1,5 +1,5 @@
 <?php
-require_once 'vendor/autoload.php';
+require_once '../vendor/autoload.php';
 
 use myExplorer\FileManager;
 use myExplorer\Request;
@@ -8,7 +8,7 @@ use myExplorer\User;
 const DS = DIRECTORY_SEPARATOR;
 define('ROOT', dirname(__DIR__) . DS);
 const DATA = ROOT .'data' .DS;
-const APP = ROOT .'myExplorer' .DS;
+const APP = ROOT .'app' .DS;
 const STORAGE = ROOT .'storage' . DS;
 const TMP = STORAGE .'tmp' .DS;
 $OS = strtoupper(substr(PHP_OS, 0, 3));
@@ -84,12 +84,12 @@ if (Request::$action == 'Preview') {
     }
 
     if ($previewerType == 'MediaPlayer') {
-        $file = DATA . self::$folder . self::$fileName;
+        $file = DATA . Request::$folder . Request::$fileName;
         echo file_get_contents($file);
     }
 
     if ($previewerType == 'DocumentViewer') {
-        $file = DATA . self::$folder . self::$fileName;
+        $file = DATA . Request::$folder . Request::$fileName;
         echo file_get_contents($file);
     }
 }

@@ -14,7 +14,7 @@ class FileManager {
         switch ($type){
             case 'root': return [
                 $name,
-                $place ? disk_free_space(DATA . $place) : null,
+                $place ? disk_free_space($place) : null,
                 $path,
                 true,
                 md5($place)
