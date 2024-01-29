@@ -36,8 +36,12 @@
 - [x] About
 
 #### OS use note
-- **Linux:** [Install **_ffmpeg_**](https://www.tecmint.com/install-ffmpeg-in-linux/) and link it to **_/myExplorer/vendor/_**
-- **Windows:** [Download **_ffmpeg.exe_**](https://ffmpeg.org/download.html) and place it to **_/myExplorer/vendor/_**
+- **Linux:**
+  - [Install **_ffmpeg_**](https://www.tecmint.com/install-ffmpeg-in-linux/) and link it to **_/myExplorer/vendor/_**
+  - [Install](https://itsfoss.com/use-7zip-ubuntu-linux/) **_7zip_**
+- **Windows:**
+  - [Download **_ffmpeg.exe_**](https://ffmpeg.org/download.html) and place it to **_/myExplorer/vendor/_**
+  - [Download](https://www.7-zip.org/download.html) and Install **_7zip_**
 
 @ StolenTech
 

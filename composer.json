@@ -1,7 +1,7 @@
 {
   "autoload": {
     "psr-4": {
-      "myExplorer\\": "vendor/myExplorer"
+      "myExplorer\\": "app"
     }
   },
   "require": {
@@ -10,6 +10,7 @@
     "ext-sqlite3": "*",
     "ext-fileinfo": "*",
     "ext-zip": "*",
-    "ext-rar": "*"
+    "ext-rar": "*",
+    "gemorroj/archive7z": "^5.5"
   }
 }

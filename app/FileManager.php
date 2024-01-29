@@ -1,6 +1,8 @@
 <?php
 namespace myExplorer;
 
+use Archive7z\Archive7z;
+use Archive7z\Exception;
 use \stdClass;
 use \ZipArchive;
 use \RarArchive;
@@ -80,6 +82,9 @@ class FileManager {
         return json_encode($obj);
     }
 
+    /**
+     * @throws Exception
+     */
     public static function scanArchive(string $path, string $ext, stdClass &$obj): string
     {
         $parts = explode($ext, $path);
@@ -107,7 +112,20 @@ class FileManager {
                 break;
 
             case '7z':
-                /**/
+                $_7z = new Archive7z($archive_path);
+                foreach ($_7z->getEntries() as $entry) {
+                    $is_folder = $entry->getAttributes() == 'D';
+                    $file = $entry->getPath();
+
+                    $arr = self::getStructure($file, $path, '', $entry->getSize(), $entry->getModified(),$is_folder?'dir':'file');
+
+                    if ( !empty($inner_path) ){
+                        if ( !strstr($arr[0], $inner_path.DS) ) continue;
+                        $arr[0] = str_replace($inner_path.DS, '', $arr[0]);
+                    }
+                    if ( strstr($arr[0], DS) ) continue;
+                    $obj->Result->{$is_folder ? 'Folders' : 'Files'}[] = $arr;
+                }
                 break;
 
             case 'rar':
