@@ -7,9 +7,18 @@ class User {
 
     private static function checkTable(): void
     {
-        $sql  = "CREATE TABLE IF NOT EXISTS `users` (
-                    `id` INTEGER PRIMARY KEY AUTOINCREMENT, `login` TEXT, `pass` TEXT,
-                    `admin` INTEGER, `manager` INTEGER, `token` TEXT
+        $sql = "CREATE TABLE IF NOT EXISTS `users` (
+                    `id` INTEGER PRIMARY KEY AUTOINCREMENT,
+                    `login` TEXT,
+                    `pass` TEXT,
+                    `full_name` TEXT,
+                    `is_admin` INTEGER,
+                    `is_manager` INTEGER,
+                    `login_count` INTEGER,
+                    `last_login` INTEGER,
+                    `created` INTEGER,
+                    `modified` INTEGER,
+                    `token` TEXT
                  )";
         DB::query($sql);
     }
@@ -35,8 +44,9 @@ class User {
             throw new Exception('trying to add user with empty login or password');
         }
         self::checkTable();
-        $sql  = "INSERT INTO `users` (`login`, `pass`, `admin`, `manager`)
-                              VALUES ('$login', '$pass', $admin, $manager)";
+        $date = date('Y-m-d H:i:s');
+        $sql  = "INSERT INTO `users` (`login`, `pass`, is_admin, is_manager, created)
+                              VALUES ('$login', '$pass', $admin, $manager, $date)";
         return DB::query($sql);
     }
 
@@ -50,8 +60,15 @@ class User {
         }
         $user = self::find($login);
         if ($user["pass"] == $pass){
-            $token = md5(date("Y-m-d H:i:s"));
-            DB::query("UPDATE `users` SET `token` = '$token' WHERE `id` = $user[id]");
+            $date = date("Y-m-d H:i:s");
+            $token = md5($date);
+            $sql = "UPDATE `users` SET
+                    `token` = '$token',
+                    `login_count` = `login_count`+1,
+                    `last_login` = '$date'
+                WHERE `id` = $user[id]
+            ";
+            DB::query($sql);
             $time = time() + ($remember ? 24 * 3600 : 600); // на 24 часа или на 10 минут
             setcookie("login", $login, $time);
             setcookie("token", $token, $time);

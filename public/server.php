@@ -9,6 +9,7 @@ const DS = DIRECTORY_SEPARATOR;
 define('ROOT', dirname(__DIR__) . DS);
 const DATA = ROOT .'data' .DS;
 const APP = ROOT .'app' .DS;
+const _PUBLIC_ = ROOT .'public' .DS;
 const STORAGE = ROOT .'storage' . DS;
 const TMP = STORAGE .'tmp' .DS;
 $OS = strtoupper(substr(PHP_OS, 0, 3));
@@ -79,7 +80,7 @@ if (Request::$action == 'Preview') {
         // $url .= "&vary=635869814876079492";
         // $url .= "&sid-gt=qnpajz3zbzeulehvjhxh3nk5";
 
-        $html = file_get_contents(APP . "/components/preview.html");
+        $html = file_get_contents(_PUBLIC_ . "preview.php");
         echo str_replace("{{url}}", $url, $html);
     }
 

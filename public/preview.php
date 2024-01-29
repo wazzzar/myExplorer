@@ -2,10 +2,10 @@
 <html lang="en">
 <head>
     <title>Image Viewer</title>
-    <link href="assets/css/viewer.css" rel="stylesheet" />
-    <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/js/viewer.js"></script>
-    <script>
+    <link href="/assets/css/viewer.css" rel="stylesheet">
+    <script src="/assets/js/jquery.min.js"></script>
+    <script src="/assets/js/viewer.js"></script>
+    <script defer>
         $(function() {
             $(".image").viewer({
                 url: "data-original",
