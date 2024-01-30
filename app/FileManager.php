@@ -116,10 +116,10 @@ class FileManager {
                     $file = $entry->getPath();
                     $arr = self::getStructure($file, $path, '', $entry->getSize(), $entry->getModified(),$is_folder?'dir':'file');
                     if ( !empty($inner_path) ){
-                        if ( !strstr($arr[0], $inner_path.DS) ) continue;
-                        $arr[0] = str_replace($inner_path.DS, '', $arr[0]);
+                        if ( !strstr($arr[0], $inner_path.'/') ) continue;
+                        $arr[0] = str_replace($inner_path.'/', '', $arr[0]);
                     }
-                    if ( strstr($arr[0], DS) ) continue;
+                    if ( strstr($arr[0], '/') ) continue;
                     $obj->Result->{$is_folder ? 'Folders' : 'Files'}[] = $arr;
                 }
                 break;
@@ -133,10 +133,10 @@ class FileManager {
                     $is_folder = $entry->isDirectory();
                     $arr = self::getStructure($stat['name'], $path, '', $stat['size'], $stat['mtime'],$is_folder?'dir':'file');
                     if ( !empty($inner_path) ){
-                        if ( !strstr($arr[0], $inner_path.'/') ) continue;
-                        $arr[0] = str_replace($inner_path.'/', '', $arr[0]);
+                        if ( !strstr($arr[0], $inner_path.'\\') ) continue;
+                        $arr[0] = str_replace($inner_path.'\\', '', $arr[0]);
                     }
-                    if ( strstr($arr[0], DS) ) continue;
+                    if ( strstr($arr[0], '\\') ) continue;
                     $obj->Result->{$is_folder ? 'Folders' : 'Files'}[] = $arr;
                 }
                 break;
@@ -211,8 +211,8 @@ class FileManager {
         }
 
         if ($ffmpeg){
-            $thumb = STORAGE . "tmp/tmp.jpg";
-            $exec = APP ."vendor/$ffmpeg -i \"$source\" -ss 00:00:01.000 -frames:v 1 \"$thumb\"";
+            $thumb = STORAGE . "tmp".DS."tmp.jpg";
+            $exec = ROOT . "vendor".DS."$ffmpeg -i \"$source\" -ss 00:00:01.000 -frames:v 1 \"$thumb\"";
             exec($exec);
             if ( file_exists($thumb) ){
                 $_resampled = imagecreatetruecolor($size, $size);

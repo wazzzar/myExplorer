@@ -10,8 +10,8 @@
 - [x] File, Zip navigation & thumbnails generation
 - [x] PHP7.4
 - [x] Tar navigation & thumbnails generation
-- [ ] Rar navigation & thumbnails generation
-- [ ] 7z navigation & thumbnails generation
+- [x] Rar navigation & thumbnails generation
+- [x] 7z navigation & thumbnails generation
 - [ ] User settings
 - [ ] Main menu panel & context menu functions /
   - [ ] Clipboard
