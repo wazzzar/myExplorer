@@ -99,9 +99,7 @@ class FileManager {
                     //$stat['name'] = mb_convert_encoding($stat['name'], 'UTF-8', mb_detect_encoding($stat['name']));
                     $is_folder = preg_match('#/$#', $stat['name']);
                     $stat['name'] = preg_replace('#/$#', '', $stat['name']);
-
                     $arr = self::getStructure($stat['name'], $path, '', $stat['size'], $stat['mtime'],$is_folder?'dir':'file');
-
                     if ( !empty($inner_path) ){
                         if ( !strstr($arr[0], $inner_path.'/') ) continue;
                         $arr[0] = str_replace($inner_path.'/', '', $arr[0]);
@@ -116,9 +114,7 @@ class FileManager {
                 foreach ($_7z->getEntries() as $entry) {
                     $is_folder = $entry->getAttributes() == 'D';
                     $file = $entry->getPath();
-
                     $arr = self::getStructure($file, $path, '', $entry->getSize(), $entry->getModified(),$is_folder?'dir':'file');
-
                     if ( !empty($inner_path) ){
                         if ( !strstr($arr[0], $inner_path.DS) ) continue;
                         $arr[0] = str_replace($inner_path.DS, '', $arr[0]);
@@ -129,22 +125,20 @@ class FileManager {
                 break;
 
             case 'rar':
-                /*$rar = new RarArchive();
-                $rar->open($archive_path);
+                $rar = RarArchive::open($archive_path);
                 foreach ($rar->getEntries() as $entry) {
-                    //$stat['name'] = mb_convert_encoding($stat['name'], 'UTF-8', mb_detect_encoding($stat['name']));
-                    $is_folder = preg_match('#/$#', $stat['name']);
-                    $stat['name'] = preg_replace('#/$#', '', $stat['name']);
-
+                    $stat['name'] = $entry->getName();
+                    $stat['size'] = $entry->getUnpackedSize();
+                    $stat['mtime'] = $entry->getFileTime();
+                    $is_folder = $entry->isDirectory();
                     $arr = self::getStructure($stat['name'], $path, '', $stat['size'], $stat['mtime'],$is_folder?'dir':'file');
-
                     if ( !empty($inner_path) ){
                         if ( !strstr($arr[0], $inner_path.'/') ) continue;
                         $arr[0] = str_replace($inner_path.'/', '', $arr[0]);
                     }
-                    if ( strstr($arr[0], '/') ) continue;
+                    if ( strstr($arr[0], DS) ) continue;
                     $obj->Result->{$is_folder ? 'Folders' : 'Files'}[] = $arr;
-                }*/
+                }
                 break;
 
             case 'tar':
@@ -155,9 +149,7 @@ class FileManager {
                     if ( empty($file) ) continue;
                     $is_folder = preg_match('#/$#', $file);
                     $file = preg_replace('#/$#', '', $file);
-
                     $arr = self::getStructure($file, $path, '', 10, 0,$is_folder?'dir':'file');
-
                     if ( !empty($inner_path) ){
                         if ( !strstr($arr[0], $inner_path.'/') ) continue;
                         $arr[0] = str_replace($inner_path.'/', '', $arr[0]);

@@ -43,8 +43,8 @@ $user = User::find( Request::cookie('login') );
         title: "myExplorer",
         userName: "<?=$user["login"]?>",
         userFullName: "<?=$user["full_name"]?>",
-        isAdministrator: <?=boolval($user['admin'])?>,
-        isGroupManager: <?=boolval($user['manager'])?>,
+        isAdministrator: <?=boolval($user['is_admin'])?>,
+        isGroupManager: <?=boolval($user['is_manager'])?>,
         handlerUrl: "/server.php"
     };
 </script>

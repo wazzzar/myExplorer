@@ -44,6 +44,11 @@ if (Request::$action == 'GetThumbnail') {
                 break;
 
             case 'rar':
+                $rar = RarArchive::open(DATA . $archive_path);
+                foreach ($rar->getEntries() as $entry) {
+                    if ( preg_match("#". $entry->getName() ."#", Request::$fileName) )
+                        $entry->extract(TMP, Request::$fileName);
+                }
                 break;
 
             case 'tar':
