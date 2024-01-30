@@ -1,6 +1,6 @@
 # GleamTech FileVista PHP clone
 
-[GleamTech FileVista home page]( https://www.GleamTech.com/filevista)
+[GleamTech FileVista home page](https://www.GleamTech.com/filevista)
 
 **TODO list**
 
@@ -35,14 +35,16 @@
 - [x] License info
 - [x] About
 
+#### Install dependency by Composer
+
 #### OS use note
 - **Linux:**
-  - [Install **_ffmpeg_**](https://www.tecmint.com/install-ffmpeg-in-linux/) and link it to **_/myExplorer/vendor/_**
+  - [Install **_ffmpeg_**](https://www.tecmint.com/install-ffmpeg-in-linux/) and link it to **_vendor_** dir
   - [Install](https://itsfoss.com/use-7zip-ubuntu-linux/) **_7zip_**
 - **Windows:**
-  - [Download **_ffmpeg.exe_**](https://ffmpeg.org/download.html) and place it to **_/myExplorer/vendor/_**
+  - [Download **_ffmpeg.exe_**](https://ffmpeg.org/download.html) and place it to **_vendor_** dir
   - [Download](https://www.7-zip.org/download.html) and Install **_7zip_**
 
 @ StolenTech
 
-![](https://komarev.com/ghpvc/?username=wazzzar)
+![PHP Developer](https://komarev.com/ghpvc/?username=wazzzar "wazzzar")
