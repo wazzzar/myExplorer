@@ -4,10 +4,14 @@ require_once '../vendor/autoload.php';
 const DATA = __DIR__;
 
 use myExplorer\Request;
-use myExplorer\User;
 use myExplorer\FileManager;
+use myExplorer\Repository\User as UserRep;
 
-$user = User::find( Request::cookie('login') );
+try {
+    $user = UserRep::find(Request::cookie('login'));
+} catch (Exception $e) {
+    //die('User not found');
+}
 ?>
 <!DOCTYPE html>
 <html class="x-viewport" id="ext-element-2" lang="en">
