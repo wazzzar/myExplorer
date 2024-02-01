@@ -6,29 +6,26 @@ const DS = DIRECTORY_SEPARATOR;
 use myExplorer\Request;
 use myExplorer\User;
 
-$authorized = false;
+$logged = false;
 if ( Request::method('post') && Request::post('loginFormSubmitButton') ){
     try {
-        $authorized = User::login(Request::post('username'), Request::post('password'), Request::post('remember') == 'on');
+        $logged = User::login(Request::post('username'), Request::post('password'), Request::post('remember') == 'on');
     } catch (Exception $e) {
         echo $e->getMessage();
-    }
-    if ($authorized){
-        header('Location: /');
-        exit();
     }
 }
 
 if ( Request::method('get') && Request::cookie('login') && Request::cookie('token') ){
     try {
-        $authorized = User::checkAuthorization(Request::cookie('login'), Request::cookie('token'));
+        $logged = User::checkAuthorization(Request::cookie('login'), Request::cookie('token'));
     } catch (Exception $e) {
         echo $e->getMessage();
     }
 }
 
-if ($authorized){
-    require_once 'myExplorer.php';
+if ($logged){
+    header('Location: /myExplorer.php');
 }else{
-    require_once 'login.php';
+    header('Location: /login.php');
 }
+exit();

@@ -1,16 +1,30 @@
 <?php
 require_once '../vendor/autoload.php';
 
+const DS = DIRECTORY_SEPARATOR;
 const DATA = __DIR__;
 
 use myExplorer\Request;
 use myExplorer\FileManager;
+use myExplorer\User;
 use myExplorer\Repository\User as UserRep;
 
+$logged = false;
 try {
-    $user = UserRep::find(Request::cookie('login'));
+    $login = Request::cookie('login');
+    if ($login){
+        $user = UserRep::find($login);
+        if ($user){
+            $logged = User::checkAuthorization($login, $user['token']);
+        }
+    }
 } catch (Exception $e) {
-    //die('User not found');
+    echo $e->getMessage();
+}
+
+if (!$logged){
+    header('Location: /login.php');
+    exit();
 }
 ?>
 <!DOCTYPE html>

@@ -1,0 +1,19 @@
+#divLogin {
+    position: absolute; visibility: visible; left: 40%; top: 10%;
+}
+#divLogin .gt-panel {
+    padding: 5px;
+}
+#divLogin table {
+    width: 280px;
+}
+#divLogin img {
+    border: none; width: 48px; height: 48px
+}
+
+#divLogin input[type=text], #divLogin input[type=password] {
+    width: 190px;
+}
+#divLogin input[type=submit] {
+    width: 100px;
+}
