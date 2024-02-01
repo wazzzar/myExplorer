@@ -47,7 +47,7 @@ class User {
         if ( !Request::cookie('login') ){
             throw new Exception(self::class .': cant logout with empty login');
         }
-        UserRep::updateLogout(Request::cookie('login'));
+        UserRep::updateLogout(Request::cookie('login'), Request::cookie('token'));
         setcookie('login','');
         setcookie('token','');
         header("Content-type: application/json");

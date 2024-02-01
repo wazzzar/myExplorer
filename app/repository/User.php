@@ -10,7 +10,8 @@ abstract class User
 
     static function checkTable(): void
     {
-        $sql = "CREATE TABLE IF NOT EXISTS `users` (
+        $sql = "CREATE TABLE IF NOT EXISTS `users`
+                (
                     `id` INTEGER PRIMARY KEY AUTOINCREMENT,
                     `login` TEXT,
                     `pass` TEXT,
@@ -21,8 +22,8 @@ abstract class User
                     `last_login` INTEGER,
                     `created` INTEGER,
                     `modified` INTEGER,
-                    `token` TEXT
-                 )";
+                    `token` TEXT DEFAULT ''
+                )";
         DB::query($sql);
     }
 
@@ -72,12 +73,15 @@ abstract class User
     /**
      * @throws Exception
      */
-    static function updateLogout(string $login): array
+    static function updateLogout(string $login, string $token): array
     {
         if ( empty($login) ){
             throw new Exception(self::class .': trying to update user logout with empty login');
         }
-        return DB::query("UPDATE `users` SET `token` = '' WHERE `login` = '$login'");
+        if ( ! self::find($login) ){
+            throw new Exception(self::class .': user not found');
+        }
+        return DB::query("UPDATE `users` SET `token` = '' WHERE `login` = '$login' AND `token` = '$token'");
     }
 
 }
