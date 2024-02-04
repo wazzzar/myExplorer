@@ -15,7 +15,7 @@ try {
     if ($login){
         $user = UserRep::find($login);
         if ($user){
-            $logged = User::checkAuthorization($login, $user['token']);
+            $logged = User::checkAuthorization($login, Request::cookie('token'));
         }
     }
 } catch (Exception $e) {
@@ -57,7 +57,7 @@ if (!$logged){
 <body>
 
 <script>
-    var headerConfig = {
+    let headerConfig = {
         title: "myExplorer",
         userName: "<?=$user["login"]?>",
         userFullName: "<?=$user["full_name"]?>",

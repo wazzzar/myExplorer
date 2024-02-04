@@ -5,27 +5,37 @@ const DS = DIRECTORY_SEPARATOR;
 
 use myExplorer\Request;
 use myExplorer\User;
+use Katzgrau\KLogger\Logger;
+
+$logger = new Logger("../app/");
 
 $logged = false;
 if ( Request::method('post') && Request::post('loginFormSubmitButton') ){
     try {
-        $logged = User::login(Request::post('username'), Request::post('password'), Request::post('remember') == 'on');
+        $login = Request::post('username');
+        $remember_me = Request::post('remember') == 'on';
+        $logger->info("trying to login user $login ($remember_me)");
+        $logged = User::login($login, Request::post('password'), $remember_me);
     } catch (Exception $e) {
-        echo $e->getMessage();
+        $logger->error($e->getMessage());
     }
 }
 
 if ( Request::method('get') && Request::cookie('login') && Request::cookie('token') ){
     try {
-        $logged = User::checkAuthorization(Request::cookie('login'), Request::cookie('token'));
+        $login = Request::cookie('login');
+        $logger->info("Check user credentials $login");
+        $logged = User::checkAuthorization($login, Request::cookie('token'));
     } catch (Exception $e) {
-        echo $e->getMessage();
+        $logger->error($e->getMessage());
     }
 }
 
 if ($logged){
+    $logger->info("Login successful");
     header('Location: /myExplorer.php');
 }else{
+    $logger->info("Login fault");
     header('Location: /login.php');
 }
 exit();

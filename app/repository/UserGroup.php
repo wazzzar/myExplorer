@@ -2,21 +2,22 @@
 
 namespace myExplorer\Repository;
 
-use myExplorer\DB;
+use myExplorer\Repository;
 
-abstract class UserGroup
+class UserGroup extends Repository
 {
 
-    static function checkTable(): void
+    public function __construct()
     {
-        $sql = "CREATE TABLE IF NOT EXISTS `user_groups`
-                (
-                    `name`     TEXT,
-                    `members`  TEXT,
-                    `created`  INTEGER,
-                    `modified` INTEGER
-                )";
-
-        DB::query($sql);
+        parent::__construct();
+        $this->table = 'user_groups';
+        $this->definition = "
+            `id`          INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+            `name`        TEXT,
+            `description` TEXT,
+            `members`     INTEGER DEFAULT 0,
+            `created`     TEXT,
+            `modified`    TEXT
+        ";
     }
 }

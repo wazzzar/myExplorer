@@ -2,21 +2,21 @@
 
 namespace myExplorer\Repository;
 
-use myExplorer\DB;
+use myExplorer\Repository;
 
-abstract class Root
+class Root extends Repository
 {
-
-    static function checkTable(): void
+    public function __construct()
     {
-        $sql = "CREATE TABLE IF NOT EXISTS `roots`
-                (
-                    `name`     TEXT,
-                    `location` TEXT,
-                    `created`  INTEGER,
-                    `modified` INTEGER
-                )";
-
-        DB::query($sql);
+        parent::__construct();
+        $this->table = 'roots';
+        $this->definition = "
+            `id`          INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+            `name`        TEXT,
+            `description` TEXT,
+            `location`    TEXT,
+            `created`     TEXT,
+            `modified`    TEXT
+        ";
     }
 }

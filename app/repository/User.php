@@ -2,47 +2,51 @@
 
 namespace myExplorer\Repository;
 
-use myExplorer\DB;
 use \Exception;
+use myExplorer\DB;
+use myExplorer\Repository;
 
-abstract class User
+class User extends Repository
 {
-
-    static function checkTable(): void
+    public function __construct()
     {
-        $sql = "CREATE TABLE IF NOT EXISTS `users`
-                (
-                    `id` INTEGER PRIMARY KEY AUTOINCREMENT,
-                    `login` TEXT,
-                    `pass` TEXT,
-                    `full_name` TEXT DEFAULT '',
-                    `is_admin` INTEGER DEFAULT 0,
-                    `is_manager` INTEGER DEFAULT 0,
-                    `login_count` INTEGER DEFAULT 0,
-                    `last_login` INTEGER,
-                    `created` INTEGER,
-                    `modified` INTEGER,
-                    `token` TEXT DEFAULT ''
-                )";
-        DB::query($sql);
+        parent::__construct();
+        $this->table = 'users';
+        $this->definition = "
+            `id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+            `login` TEXT,
+            `pass` TEXT,
+            `group` INTEGER DEFAULT 0,
+            `email` TEXT DEFAULT '',
+            `description` TEXT DEFAULT '',
+            `full_name` TEXT DEFAULT '',
+            `is_admin` INTEGER DEFAULT 0,
+            `is_manager` INTEGER DEFAULT 0,
+            `login_count` INTEGER DEFAULT 0,
+            `last_login` INTEGER,
+            `created` INTEGER,
+            `modified` INTEGER,
+            `token` TEXT DEFAULT ''
+        ";
     }
 
     /**
      * @throws Exception
      */
-    static function find(string $login): array
+    function find(string $login): array
     {
         if ( empty($login) ){
             throw new Exception(self::class .': trying to find user with empty login');
         }
         self::checkTable();
-        return DB::select("SELECT * FROM `users` WHERE `login` = '$login'");
+        $res = DB::select("SELECT * FROM `users` WHERE `login` = '$login'");
+        return count($res) ? $res[0] : [];
     }
 
     /**
      * @throws Exception
      */
-    static function add(string $login, string $pass, int $is_admin = 0, int $is_manager = 0): array
+    function add(string $login, string $pass, int $is_admin = 0, int $is_manager = 0): array
     {
         if ( empty($login) || empty($pass) ){
             throw new Exception(self::class .': trying to add user with empty login or password');
@@ -57,7 +61,7 @@ abstract class User
     /**
      * @throws Exception
      */
-    static function updateLogin(int $user_id, string $token, string $date): array
+    function updateLogin(int $user_id, string $token, string $date): array
     {
         if ( $user_id < 0 ){
             throw new Exception(self::class .': trying to update user login with invalid ID');
@@ -73,7 +77,7 @@ abstract class User
     /**
      * @throws Exception
      */
-    static function updateLogout(string $login, string $token): array
+    function updateLogout(string $login, string $token): array
     {
         if ( empty($login) ){
             throw new Exception(self::class .': trying to update user logout with empty login');

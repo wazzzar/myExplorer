@@ -2,11 +2,15 @@
 namespace myExplorer;
 
 use SQLite3;
+use myExplorer\Repository\User as UserRep;
 
 class DB {
     static private SQLite3 $connection;
     //static private $statement;
 
+    /**
+     * @throws \Exception
+     */
     static function connect(): bool
     {
         $db_file = "../storage/data.db";
@@ -17,7 +21,7 @@ class DB {
         }
         self::$connection = new SQLite3($db_file);
         if ( $create_admin ){
-            User::add('admin', 'admin', 1, 1);
+            UserRep::add('admin', 'admin', 1, 1);
         }
         return (bool)self::$connection;
     }
@@ -25,7 +29,11 @@ class DB {
     static function select(string $sql, int $fetch = SQLITE3_ASSOC): array
     {
         $result = self::$connection->query($sql);
-        return $result->fetchArray($fetch);
+        $data = [];
+        while ($fetched = $result->fetchArray($fetch)){
+            $data[] = $fetched;
+        }
+        return $data;
     }
 
     static function query(string $sql): array
@@ -54,4 +62,8 @@ class DB {
 
 }
 
-DB::connect();
+try {
+    DB::connect();
+} catch (\Exception $e) {
+    echo $e->getMessage();
+}

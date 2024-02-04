@@ -2,19 +2,9 @@
 
 namespace myExplorer\Repository;
 
-use myExplorer\DB;
+use myExplorer\Repository;
 
-abstract class Setting
+class Setting extends Repository
 {
 
-    static function checkTable(): void
-    {
-        $sql = "CREATE TABLE IF NOT EXISTS `settings`
-                (
-                    `user` INTEGER,
-                    `json` TEXT
-                )";
-
-        DB::query($sql);
-    }
 }

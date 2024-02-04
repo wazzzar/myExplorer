@@ -2,6 +2,7 @@
 namespace myExplorer;
 
 use \Exception;
+use Katzgrau\KLogger\Logger;
 use myExplorer\Repository\User as UserRep;
 
 class User {
@@ -15,7 +16,7 @@ class User {
             throw new Exception(self::class .': trying to login with empty login or password');
         }
         $user = UserRep::find($login);
-        if ($user["pass"] == $pass){
+        if ($user && $user["pass"] == $pass){
             $date = date("Y-m-d H:i:s");
             $token = md5($date);
             UserRep::updateLogin($user['id'], $token, $date);
@@ -36,7 +37,7 @@ class User {
             throw new Exception(self::class .': trying to check authorization with empty login or password');
         }
         $user = UserRep::find($login);
-        return ($user["token"] == $token);
+        return ($user && $user["token"] == $token);
     }
 
     /**

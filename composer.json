@@ -11,6 +11,7 @@
     "ext-fileinfo": "*",
     "ext-zip": "*",
     "ext-rar": "*",
-    "gemorroj/archive7z": "^5.5"
+    "gemorroj/archive7z": "^5.5",
+    "katzgrau/klogger": "dev-master"
   }
 }
