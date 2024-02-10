@@ -11,6 +11,7 @@ $logger = new Logger("../app/log");
 $logged = false;
 if ( Request::method('post') && Request::post('loginFormSubmitButton') ){
     try {
+        setcookie('lang', Request::post('lang') ?: 'en', 0, '/');
         $login = Request::post('username');
         $remember_me = Request::post('remember') == 'on';
         $logger->info("trying to login user $login ($remember_me)");
