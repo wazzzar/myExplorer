@@ -20,8 +20,8 @@ class User {
             $token = md5($date);
             (new UserRep)->updateLogin($user['id'], $token, $date);
             $time = time() + ($remember ? 24 * 3600 : 600); // на 24 часа или на 10 минут
-            setcookie("login", $login, $time);
-            setcookie("token", $token, $time);
+            setcookie("login", $login, $time, '/');
+            setcookie("token", $token, $time, '/');
             return true;
         }
         return false;
@@ -48,8 +48,8 @@ class User {
             throw new Exception(self::class .': cant logout with empty login');
         }
         (new UserRep)->updateLogout(Request::cookie('login'), Request::cookie('token'));
-        setcookie('login','');
-        setcookie('token','');
+        setcookie('login','', 0, '/');
+        setcookie('token','', 0, '/');
         header("Content-type: application/json");
         die( json_encode(['Success' => true, 'Result' => true]) );
     }

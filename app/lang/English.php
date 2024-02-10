@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'key' => 'text',
+    'code' => 'en',
     'login_title' => 'Login page',
     'login_form_title' => 'Welcome to myExplorer<br>Please enter your credentials',
     'login_form_name' => 'User name',

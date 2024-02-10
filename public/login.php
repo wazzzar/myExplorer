@@ -1,16 +1,18 @@
 <?php
 require_once "../vendor/autoload.php";
 require_once 'defs.php';
+
 use myExplorer\Lang;
 use myExplorer\Request;
-$lang = Request::cookie('lang') ?: 'en';
+
+$lang = Request::cookie('lang') ?: 'English';
 $Lang = new Lang($lang);
 
 $langs = scandir(APP .'lang');
 array_shift($langs);
 array_shift($langs);
 ?><!DOCTYPE html>
-<html lang="<?=$lang?>">
+<html lang="<?=$Lang->get('code')?>">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -58,9 +60,11 @@ array_shift($langs);
                                 <td><label for="lang"><?=$Lang->get('login_form_lang')?>:</label></td>
                                 <td>
                                     <select name="lang" id="lang">
-                                        <?php foreach ($langs as $lang){ ?>
-                                        <option value="<?=str_replace('.php', '' , $lang)?>">
-                                            <?=str_replace('.php', '' , $lang)?>
+                                        <?php foreach ($langs as $_lang){
+                                            $_lang = str_replace('.php', '' , $_lang);
+                                        ?>
+                                        <option value="<?=$_lang?>" <?=($lang==$_lang?'selected':'')?>>
+                                            <?=$_lang?>
                                         </option>
                                         <?php } ?>
                                     </select>

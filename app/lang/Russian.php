@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'code' => 'ru',
     'login_title' => 'Страница авторизации',
     'login_form_title' => 'Добро пожаловать в myExplorer<br>Пожалуйста введите логин и пароль',
     'login_form_name' => 'Логин',
