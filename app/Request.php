@@ -46,7 +46,12 @@ class Request {
                 }else{
                     self::$object = json_decode($input);
                     if ( self::$object instanceof stdClass ){
-                        if ( property_exists(self::$object, 'path') ) self::$object->path = self::clearPath(self::$object->path);
+                        if (
+                            property_exists(self::$object, 'path') &&
+                            self::$object->path
+                        ) {
+                            self::$object->path = self::clearPath(self::$object->path);
+                        }
                     }
                 }
 

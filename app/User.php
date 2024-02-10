@@ -6,7 +6,6 @@ use Katzgrau\KLogger\Logger;
 use myExplorer\Repository\User as UserRep;
 
 class User {
-
     /**
      * @throws Exception
      */
@@ -15,11 +14,11 @@ class User {
         if ( empty($login) || empty($pass) ){
             throw new Exception(self::class .': trying to login with empty login or password');
         }
-        $user = UserRep::find($login);
+        $user = (new UserRep)->find($login);
         if ($user && $user["pass"] == $pass){
             $date = date("Y-m-d H:i:s");
             $token = md5($date);
-            UserRep::updateLogin($user['id'], $token, $date);
+            (new UserRep)->updateLogin($user['id'], $token, $date);
             $time = time() + ($remember ? 24 * 3600 : 600); // на 24 часа или на 10 минут
             setcookie("login", $login, $time);
             setcookie("token", $token, $time);
@@ -36,7 +35,7 @@ class User {
         if ( empty($login) || empty($token) ){
             throw new Exception(self::class .': trying to check authorization with empty login or password');
         }
-        $user = UserRep::find($login);
+        $user = (new UserRep)->find($login);
         return ($user && $user["token"] == $token);
     }
 
@@ -48,7 +47,7 @@ class User {
         if ( !Request::cookie('login') ){
             throw new Exception(self::class .': cant logout with empty login');
         }
-        UserRep::updateLogout(Request::cookie('login'), Request::cookie('token'));
+        (new UserRep)->updateLogout(Request::cookie('login'), Request::cookie('token'));
         setcookie('login','');
         setcookie('token','');
         header("Content-type: application/json");

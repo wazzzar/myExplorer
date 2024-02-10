@@ -13,7 +13,7 @@ class DB {
      */
     static function connect(): bool
     {
-        $db_file = "../storage/data.db";
+        $db_file = STORAGE ."data.db";
         $create_admin = false;
         if ( !file_exists($db_file) ){
             touch($db_file);
@@ -21,7 +21,7 @@ class DB {
         }
         self::$connection = new SQLite3($db_file);
         if ( $create_admin ){
-            UserRep::add('admin', 'admin', 1, 1);
+            (new UserRep)->add('admin', 'admin', 1, 1);
         }
         return (bool)self::$connection;
     }

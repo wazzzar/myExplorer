@@ -1,8 +1,6 @@
 <?php
 require_once '../vendor/autoload.php';
-
-const DS = DIRECTORY_SEPARATOR;
-const DATA = __DIR__;
+require_once 'defs.php';
 
 use myExplorer\Request;
 use myExplorer\FileManager;
@@ -13,7 +11,7 @@ $logged = false;
 try {
     $login = Request::cookie('login');
     if ($login){
-        $user = UserRep::find($login);
+        $user = (new UserRep)->find($login);
         if ($user){
             $logged = User::checkAuthorization($login, Request::cookie('token'));
         }
@@ -81,7 +79,7 @@ if (!$logged){
             handlerUrl: "/server.php",
             resourceBasePath: "/assets/",
             hash: "d833a182cf9df159c761ea10fa45fb0b",
-            rootFolders: JSON.parse('<?=FileManager::getRoots("../data")?>'),
+            rootFolders: JSON.parse('<?=FileManager::getRoots()?>'),
             initialFolder: "first",
             viewLayout: "LargeIcons",
             clientEvents: {

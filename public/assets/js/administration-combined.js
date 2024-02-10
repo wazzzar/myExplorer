@@ -2871,13 +2871,13 @@ StolenTech.myExplorer.AdministrationPage.prototype.onAction = function (n, t) {
             window.location.href = "./";
             break;
         case"Settings":
-            this.ModalDialog.ShowUrl("settingsdialog.php", 420, 520, StolenTech.Util.Language.getEntry("636"));
+            this.ModalDialog.ShowUrl("dialogs/settingsdialog.php", 420, 520, StolenTech.Util.Language.getEntry("636"));
             break;
         case"License":
-            this.ModalDialog.ShowUrl("licensedialog.php", 400, 400, StolenTech.Util.Language.getEntry("531"));
+            this.ModalDialog.ShowUrl("dialogs/licensedialog.php", 400, 400, StolenTech.Util.Language.getEntry("531"));
             break;
         case"About":
-            this.ModalDialog.ShowUrl("aboutdialog.php", 400, 400, StolenTech.Util.Language.getEntry("Label.About"));
+            this.ModalDialog.ShowUrl("dialogs/aboutdialog.php", 400, 400, StolenTech.Util.Language.getEntry("Label.About"));
             break;
         case"Expand":
             i = t;
@@ -2890,13 +2890,13 @@ StolenTech.myExplorer.AdministrationPage.prototype.onAction = function (n, t) {
         case"NewUser":
             i = t ? t : this.TreeView.selectedNode;
             u = i.parent.type == StolenTech.myExplorer.AdministrationPageTreeNodeType.ManagedGroup ? i.parent.groupId : null;
-            e = "userdialog.php";
+            e = "dialogs/userdialog.php";
             u && (e += "?groupId=" + u);
             o = this.ModalDialog.ShowUrl(e, 400, 445, StolenTech.Util.Language.getEntry("533"));
             o.targetTreeNode = i;
             break;
         case"ImportUsers":
-            e = "userimportdialog.php";
+            e = "dialogs/userimportdialog.php";
             o = this.ModalDialog.ShowUrl(e, 800, 540, StolenTech.Util.Language.getEntry("Label.ImportUsers"));
             o.targetTreeNode = i;
             break;
@@ -2934,13 +2934,13 @@ StolenTech.myExplorer.AdministrationPage.prototype.onAction = function (n, t) {
             r = t;
             u = i.parent.type == StolenTech.myExplorer.AdministrationPageTreeNodeType.ManagedGroup ? i.parent.groupId : null;
             s = r.userId;
-            e = "userdialog.php";
+            e = "dialogs/userdialog.php";
             e += u ? "?groupId=" + u + "&userId=" + s : "?userId=" + s;
             this.ModalDialog.ShowUrl(e, 400, 445, StolenTech.Util.Language.getEntry("545"));
             break;
         case"NewGroup":
             i = t ? t : this.TreeView.selectedNode;
-            o = this.ModalDialog.ShowUrl("groupdialog.php", 400, 500, StolenTech.Util.Language.getEntry("540"));
+            o = this.ModalDialog.ShowUrl("dialogs/groupdialog.php", 400, 500, StolenTech.Util.Language.getEntry("540"));
             o.targetTreeNode = i;
             break;
         case"RefreshGroups":
@@ -2969,11 +2969,11 @@ StolenTech.myExplorer.AdministrationPage.prototype.onAction = function (n, t) {
         case"PropertiesOfGroup":
             r = t;
             c = r.groupId;
-            this.ModalDialog.ShowUrl("groupdialog.php?groupId=" + c, 400, 500, StolenTech.Util.Language.getEntry("546"));
+            this.ModalDialog.ShowUrl("dialogs/groupdialog.php?groupId=" + c, 400, 500, StolenTech.Util.Language.getEntry("546"));
             break;
         case"NewRootFolder":
             i = t ? t : this.TreeView.selectedNode;
-            o = this.ModalDialog.ShowUrl("rootfolderdialog.php", 800, 540, StolenTech.Util.Language.getEntry("541"));
+            o = this.ModalDialog.ShowUrl("dialogs/rootfolderdialog.php", 800, 540, StolenTech.Util.Language.getEntry("541"));
             o.targetTreeNode = i;
             break;
         case"RefreshRootFolders":
@@ -3004,13 +3004,13 @@ StolenTech.myExplorer.AdministrationPage.prototype.onAction = function (n, t) {
             r = t;
             u = i.parent.type == StolenTech.myExplorer.AdministrationPageTreeNodeType.ManagedGroup ? i.parent.groupId : null;
             h = r.rootFolderId;
-            e = "rootfolderdialog.php";
+            e = "dialogs/rootfolderdialog.php";
             e += u ? "?groupId=" + u + "&rootFolderId=" + h : "?rootFolderId=" + h;
             this.ModalDialog.ShowUrl(e, 800, 540, StolenTech.Util.Language.getEntry("547"));
             break;
         case"FilterEvents":
             i = t ? t : this.TreeView.selectedNode;
-            o = this.ModalDialog.ShowUrl("eventfilterdialog.php", 330, 350, StolenTech.Util.Language.getEntry("645"));
+            o = this.ModalDialog.ShowUrl("dialogs/eventfilterdialog.php", 330, 350, StolenTech.Util.Language.getEntry("645"));
             o.targetTreeNode = i;
             break;
         case"RefreshEvents":
@@ -3023,7 +3023,7 @@ StolenTech.myExplorer.AdministrationPage.prototype.onAction = function (n, t) {
             r = t;
             u = i.parent.type == StolenTech.myExplorer.AdministrationPageTreeNodeType.ManagedGroup ? i.parent.groupId : null;
             v = r.eventId;
-            e = "eventdialog.php";
+            e = "dialogs/eventdialog.php";
             e += u ? "?groupId=" + u + "&eventId=" + v : "?eventId=" + v;
             this.ModalDialog.ShowUrl(e, 400, 300, StolenTech.Util.Language.getEntry("646"));
             break;
@@ -3043,7 +3043,7 @@ StolenTech.myExplorer.AdministrationPage.prototype.onAction = function (n, t) {
         case"PropertiesOfPublicLink":
             r = t;
             l = r.publicLinkId;
-            e = "publiclinkdialog.php?publicLinkId=" + l;
+            e = "dialogs/publiclinkdialog.php?publicLinkId=" + l;
             this.ModalDialog.ShowUrl(e, 400, 460, StolenTech.Util.Language.getEntry("Label.EditPublicLink"))
     }
 };

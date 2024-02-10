@@ -6,6 +6,7 @@ use Archive7z\Exception;
 use \stdClass;
 use \ZipArchive;
 use \RarArchive;
+use myExplorer\Repository\Root as RootRep;
 
 class FileManager {
 
@@ -37,14 +38,13 @@ class FileManager {
         return [];
     }
 
-    public static function getRoots(string $path): string
+    public static function getRoots(): string
     {
-        $files = scandir($path);
+        $roots = (new RootRep())->getRecords();
         $tree = [];
-        foreach ( $files as $file ){
-            $place = $path ."/". $file;
-            if ( in_array($file, [".", ".."]) || !is_dir($place) ) continue;
-            $tree[] = self::getStructure($file, $path, $place, 0, 0,'root');
+        foreach ( $roots as $root ){
+            $arr = parse_url( str_replace(';', '&', $root['location']) );
+            $tree[] = self::getStructure($root['name'], '../data', ROOT . $arr['Path'], 0, 0,'root');
         }
         return json_encode($tree);
     }

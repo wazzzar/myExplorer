@@ -48,3 +48,4 @@
 @ StolenTech
 
 ![PHP Developer](https://komarev.com/ghpvc/?username=wazzzar "wazzzar")
+![PHP Developer](https://img.shields.io/packagist/dt/wazzzar/myExplorer)

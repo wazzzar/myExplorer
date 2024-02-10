@@ -1,13 +1,12 @@
 <?php
 require_once "../vendor/autoload.php";
-
-const DS = DIRECTORY_SEPARATOR;
+require_once 'defs.php';
 
 use myExplorer\Request;
 use myExplorer\User;
 use Katzgrau\KLogger\Logger;
 
-$logger = new Logger("../app/");
+$logger = new Logger("../app/log");
 
 $logged = false;
 if ( Request::method('post') && Request::post('loginFormSubmitButton') ){
